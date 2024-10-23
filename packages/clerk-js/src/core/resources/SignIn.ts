@@ -1,4 +1,5 @@
 import { deepSnakeToCamel, Poller } from '@clerk/shared';
+import { ClerkWebAuthnError } from '@clerk/shared/error';
 import { isWebAuthnAutofillSupported, isWebAuthnSupported } from '@clerk/shared/webauthn';
 import type {
   AttemptFirstFactorParams,
@@ -40,7 +41,6 @@ import {
   windowNavigate,
 } from '../../utils';
 import {
-  ClerkWebAuthnError,
   convertJSONToPublicKeyRequestOptions,
   serializePublicKeyCredentialAssertion,
   webAuthnGetCredential,
