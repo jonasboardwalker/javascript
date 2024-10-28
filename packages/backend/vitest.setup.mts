@@ -11,4 +11,4 @@ server.events.on('request:start', ({ request }) => {
 });
 
 globalThis.PACKAGE_NAME = '@clerk/backend';
-globalThis.PACKAGE_VERSION = '1';
+globalThis.PACKAGE_VERSION = '0.0.0-test';

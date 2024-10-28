@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { createCookieHeader, createJwt, mockJwtPayload, pkLive, pkTest } from '../../fixtures';
-import runtime from '../../runtime';
+import { runtime } from '../../runtime';
 import { getCookieSuffix } from '../../util/shared';
 import { createAuthenticateContext } from '../authenticateContext';
 import { createClerkRequest } from '../clerkRequest';

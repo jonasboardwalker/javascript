@@ -1,5 +1,4 @@
-import sinon from 'sinon';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
   assertActivationClaim,
@@ -189,13 +188,12 @@ describe('assertAuthorizedPartiesClaim(azp?, authorizedParties?)', () => {
 });
 
 describe('assertExpirationClaim(exp, clockSkewInMs)', () => {
-  let fakeClock;
   beforeEach(() => {
-    fakeClock = sinon.useFakeTimers();
+    vi.useFakeTimers();
   });
+
   afterEach(() => {
-    fakeClock.restore();
-    sinon.restore();
+    vi.useRealTimers();
   });
 
   it('throws err if exp is in the past', () => {
@@ -231,13 +229,12 @@ describe('assertExpirationClaim(exp, clockSkewInMs)', () => {
 });
 
 describe('assertActivationClaim(nbf, clockSkewInMs)', () => {
-  let fakeClock;
   beforeEach(() => {
-    fakeClock = sinon.useFakeTimers();
+    vi.useFakeTimers();
   });
+
   afterEach(() => {
-    fakeClock.restore();
-    sinon.restore();
+    vi.useRealTimers();
   });
 
   it('does not throw error if nbf is undefined', () => {
@@ -278,13 +275,12 @@ describe('assertActivationClaim(nbf, clockSkewInMs)', () => {
 });
 
 describe('assertIssuedAtClaim(iat, clockSkewInMs)', () => {
-  let fakeClock;
   beforeEach(() => {
-    fakeClock = sinon.useFakeTimers();
+    vi.useFakeTimers();
   });
+
   afterEach(() => {
-    fakeClock.restore();
-    sinon.restore();
+    vi.useRealTimers();
   });
 
   it('does not throw error if iat is undefined', () => {

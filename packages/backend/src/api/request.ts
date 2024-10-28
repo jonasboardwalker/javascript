@@ -3,9 +3,7 @@ import type { ClerkAPIError, ClerkAPIErrorJSON } from '@clerk/types';
 import snakecaseKeys from 'snakecase-keys';
 
 import { API_URL, API_VERSION, constants, USER_AGENT } from '../constants';
-// DO NOT CHANGE: Runtime needs to be imported as a default export so that we can stub its dependencies with Sinon.js
-// For more information refer to https://sinonjs.org/how-to/stub-dependency/
-import runtime from '../runtime';
+import { runtime } from '../runtime';
 import { assertValidSecretKey } from '../util/optionsAssertions';
 import { joinPaths } from '../util/path';
 import { deserialize } from './resources/Deserializer';
