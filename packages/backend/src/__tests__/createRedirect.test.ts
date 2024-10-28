@@ -60,7 +60,7 @@ describe('redirect(redirectAdapter)', () => {
     expect(redirectAdapterSpy).toHaveBeenCalledWith(`http://signin.url:3001/sign-in?redirect_url=${encodedUrl}`);
   });
 
-  it('raises error without signInUrl and publishableKey in redirectToSignIn', assert => {
+  it('raises error without signInUrl and publishableKey in redirectToSignIn', () => {
     const redirectAdapterSpy = vi.fn().mockImplementation(_url => 'redirectAdapterValue');
     const { redirectToSignIn } = createRedirect({
       redirectAdapter: redirectAdapterSpy,
@@ -158,7 +158,7 @@ describe('redirect(redirectAdapter)', () => {
     expect(redirectAdapterSpy).toHaveBeenCalledWith(`http://signup.url:3001/sign-up?redirect_url=${encodedUrl}`);
   });
 
-  it('raises error without signUpUrl and publishableKey in redirectToSignUp', assert => {
+  it('raises error without signUpUrl and publishableKey in redirectToSignUp', () => {
     const redirectAdapterSpy = vi.fn().mockImplementation(_url => 'redirectAdapterValue');
     const { redirectToSignUp } = createRedirect({
       redirectAdapter: redirectAdapterSpy,

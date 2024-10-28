@@ -1,5 +1,5 @@
 import { setupServer } from 'msw/node';
 
-const globalHandlers = [];
+const globalHandlers: any[] = [];
 
 export const server = setupServer(...globalHandlers);
