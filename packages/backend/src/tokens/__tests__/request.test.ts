@@ -174,19 +174,9 @@ expect.extend({
       received.orgId === undefined &&
       received.orgRole === undefined &&
       received.orgSlug === undefined &&
-      received.sessionClaims === mockJwtPayload &&
+      JSON.stringify(received.sessionClaims) === JSON.stringify(mockJwtPayload) && //  These are objects so they need to be serialized
       received.sessionId === mockJwtPayload.sid &&
       received.userId === mockJwtPayload.sub;
-    // JSON.stringify(received.getToken) === JSON.stringify(expected?.getToken);
-
-    // TODO: verify this matcher works as expected
-    // console.log(received);
-    // console.log('orgId', received.orgId);
-    // console.log('orgRole', received.orgRole);
-    // console.log('orgSlug', received.orgSlug);
-    // console.log('sessionClaims', received.sessionClaims);
-    // console.log('sessionId', received.sessionId);
-    // console.log('userId', received.userId);
 
     if (pass) {
       return {
@@ -454,19 +444,10 @@ describe('tokens.authenticateRequest(options)', () => {
       message: errMessage,
     });
 
-    // @ts-expect-error - FIXME
-    expect(requestState.toAuth()).toBeSignedOutToAuth({
-      sessionClaims: null,
-      sessionId: null,
-      userId: null,
-      orgId: null,
-      orgRole: null,
-      orgSlug: null,
-      getToken: {},
-    });
+    expect(requestState.toAuth()).toBeSignedOutToAuth();
   });
 
-  test('headerToken: returns signed in state when a valid token [1y.2y]', async () => {
+  test.only('headerToken: returns signed in state when a valid token [1y.2y]', async () => {
     server.use(
       http.get('https://api.clerk.test/v1/jwks', () => {
         return HttpResponse.json(mockJwks);
@@ -476,7 +457,7 @@ describe('tokens.authenticateRequest(options)', () => {
     const requestState = await authenticateRequest(mockRequestWithHeaderAuth(), mockOptions());
 
     expect(requestState).toBeSignedIn();
-    // expect(requestState).toBeSignedInToAuth();  FIXME: this is failing
+    expect(requestState.toAuth()).toBeSignedInToAuth();
   });
 
   // todo(
@@ -750,7 +731,7 @@ describe('tokens.authenticateRequest(options)', () => {
       signInUrl: 'https://localhost:3000/sign-in/',
       domain: 'localhost:3001',
     });
-    // expect(requestState).toBeSignedInToAuth();  FIXME: this is failing
+    expect(requestState).toBeSignedInToAuth();
   });
 
   test('cookieToken: returns handshake when clientUat > 0 and no cookieToken [8y]', async () => {
@@ -842,7 +823,7 @@ describe('tokens.authenticateRequest(options)', () => {
     );
 
     expect(requestState).toBeSignedIn();
-    // expect(requestState).toBeSignedInToAuth();  FIXME: this is failing
+    expect(requestState.toAuth()).toBeSignedInToAuth();
   });
 
   // todo(
@@ -900,7 +881,7 @@ describe('tokens.authenticateRequest(options)', () => {
     );
 
     expect(requestState).toBeSignedIn();
-    // expect(requestState).toBeSignedInToAuth();  FIXME: this is failing
+    expect(requestState.toAuth()).toBeSignedInToAuth();
   });
 
   test('refreshToken: returns signed in with valid refresh token cookie if token is expired and refresh token exists', async () => {
@@ -932,7 +913,7 @@ describe('tokens.authenticateRequest(options)', () => {
     );
 
     expect(requestState).toBeSignedIn();
-    // expect(requestState).toBeSignedInToAuth();  FIXME: this is failing
+    expect(requestState.toAuth()).toBeSignedInToAuth();
     expect(refreshSession).toHaveBeenCalled();
   });
 
@@ -1026,7 +1007,7 @@ describe('tokens.authenticateRequest(options)', () => {
     );
 
     expect(requestState).toBeSignedIn();
-    // expect(requestState).toBeSignedInToAuth();  FIXME: this is failing
-    // expect(refreshSession).toHaveBeenCalledWith('can_be_anything');  FIXME: this is failing
+    expect(requestState.toAuth()).toBeSignedInToAuth();
+    expect(refreshSession).toHaveBeenCalledWith('can_be_anything');
   });
 });
