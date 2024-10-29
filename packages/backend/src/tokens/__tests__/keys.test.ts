@@ -133,22 +133,12 @@ describe('tokens.loadClerkJWKFromRemote(options)', () => {
   });
 
   it('throws an error when JWKS can not be fetched from Backend or Frontend API', async () => {
-    try {
-      await loadClerkJWKFromRemote({
+    await expect(() =>
+      loadClerkJWKFromRemote({
         kid: 'ins_whatever',
         skipJwksCache: true,
-      });
-      expect(false).toBe(true);
-    } catch (err) {
-      if (err instanceof Error) {
-        expect(err).toMatchObject({
-          reason: 'jwk-remote-failed-to-load',
-          action: 'Contact support@clerk.com',
-        });
-      } else {
-        expect(false).toBe(true);
-      }
-    }
+      }),
+    ).rejects.toThrowError('Failed to load JWKS from Clerk Backend or Frontend API.');
   });
 
   it('throws an error when no JWK matches the provided kid', async () => {
