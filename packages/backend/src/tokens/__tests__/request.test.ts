@@ -447,7 +447,7 @@ describe('tokens.authenticateRequest(options)', () => {
     expect(requestState.toAuth()).toBeSignedOutToAuth();
   });
 
-  test.only('headerToken: returns signed in state when a valid token [1y.2y]', async () => {
+  test('headerToken: returns signed in state when a valid token [1y.2y]', async () => {
     server.use(
       http.get('https://api.clerk.test/v1/jwks', () => {
         return HttpResponse.json(mockJwks);
@@ -731,7 +731,7 @@ describe('tokens.authenticateRequest(options)', () => {
       signInUrl: 'https://localhost:3000/sign-in/',
       domain: 'localhost:3001',
     });
-    expect(requestState).toBeSignedInToAuth();
+    expect(requestState.toAuth()).toBeSignedInToAuth();
   });
 
   test('cookieToken: returns handshake when clientUat > 0 and no cookieToken [8y]', async () => {
