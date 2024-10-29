@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import type { ApiClient } from '../../api';
 import { createAuthenticateRequest } from '../factory';
@@ -6,11 +6,6 @@ import { createAuthenticateRequest } from '../factory';
 const TEST_PK = 'pk_test_Y2xlcmsuaW5jbHVkZWQua2F0eWRpZC05Mi5sY2wuZGV2JA';
 
 describe('createAuthenticateRequest({ options, apiClient })', () => {
-  let fakeAuthenticateRequest;
-  afterEach(() => {
-    fakeAuthenticateRequest?.restore();
-  });
-
   it('fallbacks to build-time options', async () => {
     const buildTimeOptions = {
       secretKey: 'sk',

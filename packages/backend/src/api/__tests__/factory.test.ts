@@ -29,8 +29,6 @@ describe('api.client', () => {
   });
 
   it('executes 2 backend API request for users.getUserList()', async () => {
-    // fakeFetch.onCall(0).returns(jsonOk([userJson]));
-    // fakeFetch.onCall(1).returns(jsonOk({ object: 'total_count', total_count: 2 }));
     server.use(
       http.get(`https://api.clerk.test/v1/users`, () => {
         return HttpResponse.json([userJson]);
@@ -41,8 +39,6 @@ describe('api.client', () => {
         return HttpResponse.json({ object: 'total_count', total_count: 2 });
       }),
     );
-    // const { data, totalCount } = await apiClient.users.getUserList({
-
     const { data, totalCount } = await apiClient.users.getUserList({
       offset: 2,
       limit: 5,
@@ -56,7 +52,6 @@ describe('api.client', () => {
   });
 
   it('executes a successful backend API request for a paginated response', async () => {
-    // fakeFetch.onCall(0).returns();
     server.use(
       http.get(`https://api.clerk.test/v1/users/user_123/organization_memberships`, () => {
         return HttpResponse.json({
