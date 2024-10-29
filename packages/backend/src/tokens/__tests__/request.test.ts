@@ -106,34 +106,60 @@ expect.extend({
       signInUrl?: string;
     },
   ) {
-    // const hasCacheControl = !!requestState?.headers?.get('cache-control');
-    // expect(hasCacheControl).toBe(true);
+    const hasCacheControl = !!received?.headers?.get('cache-control');
 
-    expect(received).toMatchObject({
-      afterSignInUrl: '',
-      afterSignUpUrl: '',
-      domain: '',
-      isSatellite: false,
-      isSignedIn: false,
-      proxyUrl: '',
-      signInUrl: '',
-      signUpUrl: '',
-      status: AuthStatus.Handshake,
-      toAuth: {},
-      token: null,
-      ...expected,
-    });
+    expect(hasCacheControl).toBe(true);
 
-    const pass = true;
+    const errors: string[] = [];
 
-    if (pass) {
+    if (received.afterSignInUrl !== '') {
+      errors.push('afterSignInUrl');
+    }
+
+    if (received.afterSignUpUrl !== '') {
+      errors.push('afterSignUpUrl');
+    }
+
+    if (received.domain !== (expected?.domain ?? '')) {
+      errors.push('domain');
+    }
+
+    if (received.isSatellite !== (expected?.isSatellite ?? false)) {
+      errors.push('isSatellite');
+    }
+
+    if (received.isSignedIn !== false) {
+      errors.push('isSignedIn');
+    }
+
+    if (received.proxyUrl !== '') {
+      errors.push('proxyUrl');
+    }
+
+    if (received.signInUrl !== (expected?.signInUrl ?? '')) {
+      errors.push('signInUrl');
+    }
+
+    if (received.signUpUrl !== '') {
+      errors.push('signUpUrl');
+    }
+
+    if (received.status !== AuthStatus.Handshake) {
+      errors.push('status');
+    }
+
+    if (received.token !== null) {
+      errors.push('token');
+    }
+
+    if (errors.length === 0) {
       return {
-        message: () => `expected not to match handshake state`,
+        message: () => `matches handshake state`,
         pass: true,
       };
     } else {
       return {
-        message: () => `expected to match handshake state`,
+        message: () => `expected to match handshake state but found errors: ${errors.join(', ')}`,
         pass: false,
       };
     }
