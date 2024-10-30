@@ -1,5 +1,19 @@
 # Change Log
 
+## 5.13.2
+
+### Patch Changes
+
+- - Introduce `redirectUrl` property on `setActive` as a replacement for `beforeEmit`. ([#4312](https://github.com/clerk/javascript/pull/4312)) by [@issuedat](https://github.com/issuedat)
+
+  - Deprecates `beforeEmit` property on `setActive`.
+
+- Updates `useDerivedAuth()` to correctly derive `has()` from the available auth data. Fixes an issue when `useAuth()` is called during server-side rendering. ([#4421](https://github.com/clerk/javascript/pull/4421)) by [@BRKalow](https://github.com/BRKalow)
+
+- Updated dependencies [[`f875463da`](https://github.com/clerk/javascript/commit/f875463da9692f2d173b6d5388743cf720750ae3), [`5be7ca9fd`](https://github.com/clerk/javascript/commit/5be7ca9fd239c937cc88e20ce8f5bfc9f3b84f22)]:
+  - @clerk/types@4.29.0
+  - @clerk/shared@2.10.2
+
 ## 5.13.1
 
 ### Patch Changes

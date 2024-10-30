@@ -1,5 +1,26 @@
 # Change Log
 
+## 5.30.0
+
+### Minor Changes
+
+- - Introduce `redirectUrl` property on `setActive` as a replacement for `beforeEmit`. ([#4312](https://github.com/clerk/javascript/pull/4312)) by [@issuedat](https://github.com/issuedat)
+
+  - Deprecates `beforeEmit` property on `setActive`.
+
+### Patch Changes
+
+- Experimental: `asStandalone` now accepts a callback that notifies if the standalone popover needs to unmount. ([#4423](https://github.com/clerk/javascript/pull/4423)) by [@panteliselef](https://github.com/panteliselef)
+
+- Improve checkbox label alignment to account for wrapping labels. ([#4426](https://github.com/clerk/javascript/pull/4426)) by [@alexcarpenter](https://github.com/alexcarpenter)
+
+- Remove unused `fitTextInOneLine` and `textWidthForCurrentSize` ([#4407](https://github.com/clerk/javascript/pull/4407)) by [@zythosec](https://github.com/zythosec)
+
+- Updated dependencies [[`f875463da`](https://github.com/clerk/javascript/commit/f875463da9692f2d173b6d5388743cf720750ae3), [`5be7ca9fd`](https://github.com/clerk/javascript/commit/5be7ca9fd239c937cc88e20ce8f5bfc9f3b84f22), [`c2f5071be`](https://github.com/clerk/javascript/commit/c2f5071be151130a62340eb35f19cec64313645e), [`ae0621972`](https://github.com/clerk/javascript/commit/ae0621972fcb4b8039b723436eac3f45e81487bc), [`cd2189ac8`](https://github.com/clerk/javascript/commit/cd2189ac89653e5dad8732d7f592f222962737e9), [`159877be0`](https://github.com/clerk/javascript/commit/159877be0f4aaed89d17d864cfe7ce633a4531e0)]:
+  - @clerk/types@4.29.0
+  - @clerk/localizations@3.4.1
+  - @clerk/shared@2.10.2
+
 ## 5.29.1
 
 ### Patch Changes

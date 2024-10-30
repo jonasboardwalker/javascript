@@ -1,5 +1,17 @@
 # @clerk/elements
 
+## 0.17.2
+
+### Patch Changes
+
+- - Introduce `redirectUrl` property on `setActive` as a replacement for `beforeEmit`. ([#4312](https://github.com/clerk/javascript/pull/4312)) by [@issuedat](https://github.com/issuedat)
+
+  - Deprecates `beforeEmit` property on `setActive`.
+
+- Updated dependencies [[`f875463da`](https://github.com/clerk/javascript/commit/f875463da9692f2d173b6d5388743cf720750ae3), [`5be7ca9fd`](https://github.com/clerk/javascript/commit/5be7ca9fd239c937cc88e20ce8f5bfc9f3b84f22)]:
+  - @clerk/types@4.29.0
+  - @clerk/shared@2.10.2
+
 ## 0.17.1
 
 ### Patch Changes
