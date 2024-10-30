@@ -72,12 +72,12 @@
   },
   "dependencies": {
     "@clerk/shared": "2.10.1",
-    "@clerk/types": "4.28.0",
-    "@radix-ui/react-form": "0.1.0",
-    "@radix-ui/react-slot": "1.1.0",
-    "@xstate/react": "4.1.1",
-    "client-only": "0.0.1",
-    "xstate": "5.15.0"
+    "@clerk/types": "^4.28.0",
+    "@radix-ui/react-form": "^0.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@xstate/react": "^4.1.1",
+    "client-only": "^0.0.1",
+    "xstate": "^5.15.0"
   },
   "devDependencies": {
     "@clerk/clerk-react": "5.13.1",
